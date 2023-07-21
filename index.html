@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>clouser</title>
+</head>
+<body>
+<pre style="font-weight: bolder;">
+Que-   function counter(){
+    var counter = 0;
+
+    function IncreaseCounter() {
+        return counter += 1;
+    };
+
+    return IncreaseCounter;
+}
+
+var counter = counter();
+alert(counter());
+alert(counter());
+alert(counter());
+alert(counter());"</pre>
+  <p style="color: red;">ans-the output is 1, 2, 3, and 4. The function counter() effectively creates a private variable (counter) within its scope and provides access to it through the IncreaseCounter() function, implementing a basic closure pattern.</p>
+
+  <pre style="font-weight: bolder;">Que-"let count = 0;
+(function () {
+  if (count === 0) {
+    let count = 1;
+    console.log(count); // What is logged?
+  }
+  console.log(count); // What is logged?
+})();"   
+
+
+
+
+</pre>
+  <p style="color: red;">ans-the output is 1,0.The two count variables are in different scopes due to the use of let, and the inner count variable within the if block does not affect the outer/global count variable.</p>
+
+
+  <pre style="font-weight: bolder;">Que- "for (var i = 0; i < 3; i++) {
+  setTimeout(function log() {
+    console.log(i); // What is logged?
+  }, 1000);
+}"</pre>
+  <p style="color: red;"> the output is 3 repeated 3 times each console.log(i) inside the log() function prints 3 because the closure captures the reference to the i variable in the global scope, which has the final value of 3.</p>
+
+
+  <p style="font-weight: bolder;">Que-Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and inner function should accept parameter breadth.</p>
+  <pre style="color: red;">function calculateArea(length) {
+ 
+  function innerFunction(breadth) {
+    return length * breadth;
+  }
+
+  return innerFunction; 
+}
+
+const rectangleWithLength5 = calculateArea(5)
+const area = rectangleWithLength5(10);
+console.log("Area of the rectangle is:", area)
+</pre>
+
+
+<p style="font-weight: bolder;">Que-Take a variable in outer function and create an inner function to increase the counter every time it is called</p>
+<pre style="color: red;">function Counter() {
+  let counter = 0; 
+  function increaseCounter() {
+    counter++;
+    console.log(+ counter);
+  }
+
+  return increaseCounter; 
+}
+
+const counterFunction = Counter();
+
+counterFunction();
+counterFunction(); 
+counterFunction();</pre>
+   
+<pre style="font-weight: bolder;">"Print Output
+
+var a = 12;
+(function () {
+  alert(a);
+})();"</pre>
+
+<p style="color: red;">ans- the output is an alert showing "12". The global variable a is accessible inside the IIFE because it is within the same scope as the IIFE, and therefore, the alert displays the value of a as "12". </p>
+
+
+<pre style="font-weight: bolder;">Que-"var a = 10;
+var x = (function () {
+  var a = 12;
+  return function () {
+    alert(a);
+  };
+})();
+x();"</pre>
+   <p style="color: red;">the output is an alert showing "12". The global variable a with the value 10 does not affect the inner function because it's shadowed by the local variable a inside the IIFE.</p>
+
+
+   <pre style="font-weight: bolder;">Que-"var globalVar = ""xyz"";
+
+(function outerFunc(outerArg) {
+    var outerVar = 'a';
+    
+    (function innerFunc(innerArg) {
+    var innerVar = 'b';
+    
+    console.log(
+        ""outerArg = "" + outerArg + ""\n"" +
+        ""innerArg = "" + innerArg + ""\n"" +
+        ""outerVar = "" + outerVar + ""\n"" +
+        ""innerVar = "" + innerVar + ""\n"" +
+        ""globalVar = "" + globalVar);
+    
+    })(456);
+})(123);"</pre>
+
+
+<pre style="color: red;">ans-outerArg = 123
+innerArg = 456
+outerVar = a
+innerVar = b
+globalVar = xyz</pre>
+
+</body>
+</html>
